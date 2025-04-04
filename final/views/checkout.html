@@ -1,0 +1,26 @@
+<include href="views/includes/header.html"></include>
+<include href="views/includes/navbar.html"></include>
+
+
+<div class="container">
+    <h1 class="text-center text-white">Checkout</h1>
+    <div id="listings" class="listings"></div>
+    <form id="checkout-summary" class="checkout-summary" action="#" method="POST">
+        {{ @posted ? '' : '<h2>Your Cart</h2>' }}
+            <check if="{{ @posted }}" >
+                <true>
+                    <h4>Success! Order placed!</h4>
+                </true>
+                <false>
+                    <repeat group="{{ @SESSION.user->getCart() }}" value="{{ @listing }}">
+                        <p>{{ @listing->getName() }} - {{ @listing->getBrand() }} | ${{ @listing->getAbsolutePrice() }}</p>
+                    </repeat>
+                    <h4 id="total-cost">Total Cost: ${{ number_format(@total,2) }}</h4>
+                    <input type="submit" id="checkout-button" value="Place Order">
+
+                </false>
+            </check>
+    </form>
+</div>
+
+<include href="views/includes/footer.html"></include>

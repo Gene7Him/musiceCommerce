@@ -1,0 +1,33 @@
+<include href="views/includes/header.html"></include>
+<include href="views/includes/navbar.html"></include>
+<div class="container text-center signup-page">
+    <h2>Create Account</h2>
+    <form action="signup" method="post">
+        <div class="input-group">
+            <span class="input-group-text" id="fname-label">First Name</span>
+            <input type="text" name="first_name" id="first_name" class="form-control" aria-describedby="fname-label" required>
+        </div>
+        <div class="is-invalid m-2">{{ !empty(@fnameError) ? @fnameError : '' }}</div>
+        <div class="input-group">
+            <span class="input-group-text" id="lname-label">Last Name</span>
+            <input type="text" name="last_name" id="last_name" class="form-control" aria-describedby="lname-label" required>
+        </div>
+        <div class="is-invalid m-2">{{ !empty(@lnameError) ? @lnameError : '' }}</div>
+        <div class="input-group">
+            <span class="input-group-text" id="email-label">Email Address</span>
+            <input type="email" name="email" id="email" class="form-control" aria-describedby="email-label" required>
+        </div>
+        <div class="is-invalid m-2">{{ !empty(@emailError) ? @emailError : '' }}</div>
+        <div class="input-group">
+            <span class="input-group-text" id="password-label">Password</span>
+            <input type="password" name="password" id="password" class="form-control" aria-describedby="password-label" required>
+        </div>
+        <div class="is-invalid m-2">{{ !empty(@passError) ? @passError : '' }}</div>
+        <button type="submit">Sign Up</button>
+    </form>
+    <p>Already have an account? <a href="login">Log In</a></p>
+    <p>{{ @error }}</p>
+</div>
+</body>
+</html>
+<include href="views/includes/footer.html"></include>

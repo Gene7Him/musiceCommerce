@@ -1,0 +1,75 @@
+<div class="container">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="{{ @BASE }}">Phrygian</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="{{ @BASE }}">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="about">About</a>
+                </li>
+            </ul>
+            <form class="form-inline my-2 my-lg-0 justify-content-end" id="search-form" action="search" method="POST">
+                <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Search for instruments..." aria-label="Search"
+                           aria-describedby="search-addon" name="query" id="search-query">
+                    <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown"
+                            aria-haspopup="true" aria-expanded="false">
+                        <img src="images/sorticon.png" alt="Search Logo" style="width: 30px;" id="sort-logo">
+                    </button>
+                    <div class="dropdown-menu dropdown-menu-end" id="sort-dropdown-div">
+                        <div class="form-check mx-3">
+                            <input type="radio" class="form-check-input" name="sort" value="price-asc" id="price-asc">
+                            <label class="form-check-label radio-inline" for="price-asc">Price: Low to High</label><br>
+                        </div>
+                        <div class="form-check mx-3">
+                            <input type="radio" class="form-check-input" name="sort" value="price-desc" id="price-desc">
+                            <label class="form-check-label radio-inline" for="price-desc">Price: High to Low</label><br>
+                        </div>
+                        <div class="form-check mx-3">
+                            <input type="radio" class="form-check-input" name="sort" value="new-arrivals" id="new-arrivals">
+                            <label class="form-check-label radio-inline" for="new-arrivals">New Arrivals</label><br>
+                        </div>
+                    </div>
+                    <button class="btn btn-outline-success" type="submit" id="search-button">
+                        <img src="images/searchIcon.png" alt="Search Logo" style="width: 30px;" id="search-logo">
+                    </button>
+                </div>
+            </form>
+            <div class="dropdown">
+                <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-haspopup="true"
+                        aria-expanded="false">
+                    <img src="images/cart.png" alt="Cart icon" id="cart-icon" style="width: 30px;" class="image">
+                </button>
+                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="cart-icon">
+                    <div id="cart-listings">
+                        <p></p>
+                    </div>
+                    <a class="dropdown-item text-center" href="checkout">Checkout</a>
+                    <a class="dropdown-item text-center" href="#" onclick="emptyCart()">Empty Cart</a>
+                </div>
+            </div>
+            <div class="dropdown">
+                <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <img src="images/login.jpg" alt="Account icon" id="account-icon" style="width: 30px;" class="image">
+                </button>
+                <div class="dropdown-menu" aria-labelledby="account-icon">
+                    <check if="{{ empty(@SESSION.user) }}">
+                        <true>
+                            <a class="dropdown-item text-center" href="login">Log In</a>
+                            <a class="dropdown-item text-center" href="signup">Sign Up</a>
+                        </true>
+                        <false>
+                            <a class="dropdown-item text-center" href="orders">View Orders</a>
+                        </false>
+                    </check>
+                </div>
+            </div>
+        </div>
+    </nav>
+</div>
+
